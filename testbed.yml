@@ -1,0 +1,72 @@
+devices:
+  R1:
+    connections:
+      cli:
+        ip: 192.168.0.30
+        protocol: ssh
+    credentials:
+      default:
+        password: "%ENV{PASSWORD}"
+        username: "%ENV{USER}"
+      enable:
+        password: "%ENV{ENABLE}"
+    os: iosxe
+    type: iosxe
+  R2:
+    connections:
+      cli:
+        ip: 192.168.0.31
+        protocol: ssh
+    credentials:
+      default:
+        password: "%ENV{PASSWORD}"
+        username: "%ENV{USER}"
+      enable:
+        password: "%ENV{ENABLE}"
+    os: iosxe
+    type: iosxe
+  R3:
+    connections:
+      cli:
+        ip: 192.168.0.32
+        protocol: ssh
+    credentials:
+      default:
+        password: "%ENV{PASSWORD}"
+        username: "%ENV{USER}"
+      enable:
+        password: "%ENV{ENABLE}"
+    os: iosxe
+    type: iosxe
+
+topology:
+  R1:
+    interfaces:
+      Ethernet0/1:
+        type: ethernet
+        ipv4: 10.0.0.1/30
+        link: r1-r2
+      Ethernet0/2:
+        type: ethernet
+        ipv4: 10.0.0.5/30
+        link: r1-r3
+  R2:
+    interfaces:
+      Ethernet0/1:
+        type: ethernet
+        ipv4: 10.0.0.2/30
+        link: r1-r2
+      Ethernet0/2:
+        type: ethernet
+        ipv4: 10.0.0.10/30
+        link: r2-r3
+  R3:
+    interfaces:
+      Ethernet0/1:
+        type: ethernet
+        ipv4: 10.0.0.6/30
+        link: r1-r3
+      Ethernet0/2:
+        type: ethernet
+        ipv4: 10.0.0.9/30
+        link: r2-r3
