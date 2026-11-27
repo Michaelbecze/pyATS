@@ -22,7 +22,6 @@ class CommonSetup(aetest.CommonSetup):
 
 
 class EIGRP_Neighbor(aetest.Testcase):
-
     @aetest.setup
     def setup(self, testbed, device_name):
         self.device = testbed.devices[device_name]
@@ -39,7 +38,6 @@ class EIGRP_Neighbor(aetest.Testcase):
 
         if count != EXPECTED_EIGRP:
             self.failed(f"{self.device.name}: expected {EXPECTED_EIGRP} EIGRP neighbors, found {count}")
-
 
 class CommonCleanup(aetest.CommonCleanup):
     @aetest.subsection
